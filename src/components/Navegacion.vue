@@ -52,7 +52,12 @@
             <ul class="nav-shop">
               <li class="nav-item"><button><i class="ti-search"></i></button></li>
               <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
-              <li class="nav-item"><router-link class="button button-header" to="/#">Buy Now</router-link></li>
+              <li class="nav-item submenu dropdown">
+                <button data-toggle="dropdown" class="button button-header dropdown-toggle" v-if="usuario">{{usuario}}</button>
+                <div class="dropdown-menu">
+                  <button style="padding:0 12px; margin:auto !important;text-align:center;width:100%;" @click="Desloguearse">Cerrar sesion</button>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
@@ -65,7 +70,40 @@
 </template>
 
 <script>
+import firebase from '../firebase.js';
+import Swal from 'sweetalert';
 export default {
   name: 'Navegacion',
+  data(){
+    return{
+      usuario:null,
+    }
+  },
+
+
+
+
+  created(){
+    let self = this;
+    if(firebase.auth().currentUser){
+        self.usuario = firebase.auth().currentUser.email
+    }
+    else{
+      this.usuario = null
+    }
+  },
+
+  methods:{
+    Desloguearse: function(){
+      Swal({ title: "Cerrando sesion" , text: "Esta seguro que desea cerrar la sesion?", icon: "warning", buttons:["cancelar","cerrar sesion"],})
+        .then((cerrar_sesion) => {
+          if(cerrar_sesion){
+          firebase.auth().signOut().then(() =>{this.$router.go('/inicio')})
+        }
+      })
+    },
+  }
+
+
 }
 </script>

@@ -8,7 +8,8 @@ $(function() {
 
   //------- Active Nice Select --------//
   $('select').niceSelect();
-
+  
+    $(".owl-carousel").owlCarousel();
   //------- hero carousel -------//
   $(".hero-carousel").owlCarousel({
     items:3,

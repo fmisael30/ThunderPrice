@@ -69,12 +69,12 @@ export default {
         Funcion_Registrarse: function(){
         firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(
             () => {
-            Swal({ title: "Registro de cuenta exitoso" , text: "la cuenta se ha registrado sin problemas, ya puede comenzar a utilizar la plataforma", icon: "success"})
+            Swal({ title: "Registro de cuenta exitoso" , text: "la cuenta se ha registrado sin problemas, ya puede comenzar a utilizar la plataforma", icon: "success"}).then(() =>{this.$router.go('/login')})
             },
             (err) =>{
             Swal({ title: "Error!", text: err.message, icon: "error"})
             }
-        );
+        )
         },
 
     },

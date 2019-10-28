@@ -236,7 +236,16 @@ export default {
             ],
         }
     },
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /*eslint-disable */
+    beforeRouteEnter(to, from, next) {
+      next(vm => {
+          $('.owl-carousel').owlCarousel();
+      })
+    },
+    /*eslint-enable */
+
+
     created(){        
 
           db.collection('Productos').get().then((querySnapshot) => {
@@ -252,8 +261,11 @@ export default {
                  this.Productos_Populares.push(data)
             })
           });
+
+          
     },
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    
     methods:{       
         Funcion_desloguearse: function(){
            Swal({ title: "Cerrando sesion de "+this.usuario , text: "vuelva pronto!", icon: "warning"})
@@ -263,7 +275,8 @@ export default {
             )
         },        
     },
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
   computed: {
     Productos_Populares_Filter() {
       return this.Productos_Populares
