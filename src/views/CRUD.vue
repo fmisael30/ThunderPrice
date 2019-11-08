@@ -1,4 +1,4 @@
-~~<template>
+<template>
   <div>
 									<div class="comment-form container shadow">
 											<form>
