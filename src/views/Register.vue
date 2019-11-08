@@ -28,10 +28,10 @@
 								<input type="text" class="form-control" id="email" name="email" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'" v-model="email">
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="password" name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" v-model="password">
+								<input type="password" class="form-control" id="password" name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" v-model="password">
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirm Password'" v-model="password">
+								<input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirm Password'" v-model="password">
 							</div>
 							<div class="col-md-12 form-group">
 								<button type="submit" value="submit" class="button button-register w-100" @click="Funcion_Registrarse">Register</button>
@@ -69,7 +69,7 @@ export default {
         Funcion_Registrarse: function(){
         firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(
             () => {
-            Swal({ title: "Registro de cuenta exitoso" , text: "la cuenta se ha registrado sin problemas, ya puede comenzar a utilizar la plataforma", icon: "success"}).then(() =>{this.$router.go('/login')})
+            Swal({ title: "Registro de cuenta exitoso" , text: "la cuenta se ha registrado sin problemas, ya puede comenzar a utilizar la plataforma", icon: "success"}).then(() =>{this.$router.replace('/inicio')})
             },
             (err) =>{
             Swal({ title: "Error!", text: err.message, icon: "error"})

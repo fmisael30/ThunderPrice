@@ -24,7 +24,7 @@
 								<input type="text" class="form-control" id="name" name="name" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'"  v-model="email">
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="name" name="name" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" v-model="password">
+								<input type="text" class="form-control" id="password" name="name" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" v-model="password">
 							</div>
 							<div class="col-md-12 form-group">
 								<button type="submit" value="submit" class="button button-login w-100" @click="Funcion_Logearse">Log In</button>
@@ -63,7 +63,7 @@ export default {
         Funcion_Logearse: function(){
         firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
             () => {
-            Swal({ title: "Inicio de sesion exitoso" , text: "la sesion se ha iniciado sin problemas, ya puede comenzar a utilizar la plataforma", icon: "success"}).then(() =>{this.$router.go('/inicio')})
+            Swal({ title: "Inicio de sesion exitoso" , text: "la sesion se ha iniciado sin problemas, ya puede comenzar a utilizar la plataforma", icon: "success"}).then(() =>{this.$router.replace('/inicio')})
             },
             (err) =>{
             Swal({ title: "Error!", text: err.message, icon: "error"})
