@@ -84,7 +84,7 @@ export default {
       Swal({ title: "Cerrando sesion" , text: "Esta seguro que desea cerrar la sesion?", icon: "warning", buttons:["cancelar","cerrar sesion"],})
         .then((cerrar_sesion) => {
           if(cerrar_sesion){
-          firebase.auth().signOut().then(() =>{this.$router.go('/inicio')})
+          firebase.auth().signOut().then(() =>{this.$router.replace('/')})
         }
       })
     },
