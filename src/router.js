@@ -21,9 +21,13 @@ let router = new Router({
     },
     {
       path: '/',
-      alias: '/inicio',
+      name: 'cover',
+      component: () => import(/* webpackChunkName: "cover" */ './views/Cover.vue')
+    },
+    {
+      path: '/inicio',
       name: 'inicio',
-      component: () => import(/* webpackChunkName: "logeo" */ './views/Inicio.vue')
+      component: () => import(/* webpackChunkName: "inicio" */ './views/Inicio.vue')
     },
     {
       path: '/login',
@@ -66,6 +70,30 @@ let router = new Router({
           requiresAuth: true
       }
     },
+    {
+      path: '/Carrito',
+      name: 'carrito',
+      component: () => import(/* webpackChunkName: "carrito" */ './views/Carrito.vue'),
+      meta: {
+          requiresAuth: true
+      }
+    },
+    {
+      path: '/Checkout',
+      name: 'checkout',
+      component: () => import(/* webpackChunkName: "checkout" */ './views/Checkout.vue'),
+      meta: {
+          requiresAuth: true
+      }
+    },
+    {
+      path: '/Confirmation',
+      name: 'confirmation',
+      component: () => import(/* webpackChunkName: "confirmation" */ './views/Confirmation.vue'),
+      meta: {
+          requiresAuth: true
+      }
+    },
   ],
 
 
@@ -78,8 +106,13 @@ router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
   const currentUser = firebase.auth().currentUser
 
-  
-  
+  if (requiresAuth && !currentUser) {
+      next('/login')
+  } else if (requiresAuth && currentUser) {
+      next()
+  } else {
+      next()
+  }
 })
 
 export default router
