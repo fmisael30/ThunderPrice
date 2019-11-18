@@ -44,7 +44,7 @@
                                   </div>
                               </td>
                               <td>
-                                  <h5>${{Productos.Precio * Productos.Cantidad}}</h5>
+                                  <h5>${{parseFloat(Producto.Precio)*parseFloat(Producto.Cantidad)}}</h5>
                               </td>
                           </tr>
 
