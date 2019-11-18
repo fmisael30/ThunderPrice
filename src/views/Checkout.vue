@@ -23,9 +23,9 @@
                             </li>
                         </ul>
                         <ul class="list list_2">
-                            <li><a href="#">Subtotal <span>$2160.00</span></a></li>
+                            <li><a href="#">Subtotal <span>$00.00</span></a></li>
                             <li><a href="#">Shipping <span>Flat rate: $50.00</span></a></li>
-                            <li><a href="#">Total <span>$2210.00</span></a></li>
+                            <li><a href="#">Total <span>$00.00</span></a></li>
                         </ul>
                         <div class="payment_item">
                             <div class="radion_btn">
