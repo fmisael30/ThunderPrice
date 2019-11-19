@@ -66,7 +66,7 @@
                                   <h5>Subtotal</h5>
                               </td>
                               <td>
-                                  <h5>$00.00</h5>
+                                  <h5>${{total}}</h5>
                               </td>
                           </tr>
                           <tr class="out_button_area">
@@ -106,11 +106,12 @@ export default {
     data(){
         return{
             Productos_enCarrito:[],
+            Total:[],
         }
     },
 
-        created(){        
-
+    
+    created(){
           db.collection('Carrito').get().then((querySnapshot) => {
             querySnapshot.forEach((doc) =>{
               //console.log(doc.data())
@@ -124,11 +125,19 @@ export default {
                    'Cantidad': doc.data().Cantidad,
                  }
                  this.Productos_enCarrito.push(data)
+                 this.Total.push(parseInt(data.Precio)*parseInt(data.Cantidad))
+                 //console.log(this.Total);
             })
-          });
-
-          
+          });      
     },
+
+  computed: {
+    total: function(){
+        return this.Total.reduce(function(total, item){
+        return total + item; 
+    },0);
+  }
+  }
 
 
 

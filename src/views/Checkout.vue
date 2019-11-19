@@ -23,9 +23,7 @@
                             </li>
                         </ul>
                         <ul class="list list_2">
-                            <li><a href="#">Subtotal <span>$00.00</span></a></li>
-                            <li><a href="#">Shipping <span>Flat rate: $50.00</span></a></li>
-                            <li><a href="#">Total <span>$00.00</span></a></li>
+                            <li><a href="#">Total <span>${{Total}}</span></a></li>
                         </ul>
                         <div class="payment_item">
                             <div class="radion_btn">
@@ -78,11 +76,12 @@ export default {
     data(){
         return{
             Productos_enCarrito:[],
+            Total:[],
         }
     },
 
-        created(){        
-
+    
+    created(){
           db.collection('Carrito').get().then((querySnapshot) => {
             querySnapshot.forEach((doc) =>{
               //console.log(doc.data())
@@ -96,10 +95,18 @@ export default {
                    'Cantidad': doc.data().Cantidad,
                  }
                  this.Productos_enCarrito.push(data)
+                 this.Total.push(parseInt(data.Precio)*parseInt(data.Cantidad))
+                 console.log(this.Total);
             })
-          });
-
-          
+          });      
     },
+
+  computed: {
+    total: function(){
+        return this.Total.reduce(function(total, item){
+        return total + item; 
+    },0);
+  }
+  }
 }
 </script>
