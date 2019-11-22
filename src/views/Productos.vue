@@ -105,11 +105,6 @@
                     <div class="card text-center card-product">
                       <div class="card-product__img">
                         <img class="card-img" v-bind:src="Producto.Imagen">
-                        <ul class="card-product__imgOverlay d-none">
-                          <li><button><i class="ti-search"></i></button></li>
-                          <li><button @click="Agregar_Carrito"><i class="ti-shopping-cart"></i></button></li>
-                          <li><button><i class="ti-heart"></i></button></li>
-                        </ul>
                       </div>
                       <div class="card-body">
                         <p>{{Producto.Categoria}}</p>

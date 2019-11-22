@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import {db ,ref} from '../firebase.js'
+import {firebase,db ,ref} from '../firebase.js'
 import Swal from 'sweetalert';
 export default {
   name:'CRUD',
@@ -74,6 +74,7 @@ export default {
                         Categoria: self.Categoria,
                         Precio: self.Precio,
                         Descripcion: self.Descripcion,
+                        Publicador_id: firebase.auth().currentUser.uid,
                       })              
 
                 Swal({ title: "Publicacion exitosa", text: "Tu producto se ha publicado", icon: "success", button: "ok"})

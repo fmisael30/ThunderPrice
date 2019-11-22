@@ -23,7 +23,7 @@
                             </li>
                         </ul>
                         <ul class="list list_2">
-                            <li><a href="#">Total <span>${{Total}}</span></a></li>
+                            <li><a href="#">Total <span>${{total}}</span></a></li>
                         </ul>
                         <div class="payment_item">
                             <div class="radion_btn">
@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import {db} from '../firebase.js';
+import {firebase,db} from '../firebase.js';
 export default {
     name:'Checkout',
     data(){
@@ -82,7 +82,7 @@ export default {
 
     
     created(){
-          db.collection('Carrito').get().then((querySnapshot) => {
+          db.collection('Carrito').where('Usuario_id','==', firebase.auth().currentUser.uid).get().then((querySnapshot) => {
             querySnapshot.forEach((doc) =>{
               //console.log(doc.data())
                  const data ={

@@ -14,6 +14,7 @@
                               <th scope="col">Product</th>
                               <th scope="col">Price</th>
                               <th scope="col">Total</th>
+                              <th scope="col">Borrar</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -34,6 +35,9 @@
                               </td>
                               <td>
                                   <h5>${{parseFloat(Productos.Precio)*parseFloat(Productos.Cantidad)}}</h5>
+                              </td>
+                              <td>
+                                  <i class="lnr lnr lnr-trash" style="cursor:pointer;" @click="Borrar_item(index)"></i>
                               </td>
                           </tr>
 
@@ -100,7 +104,7 @@
 </template>
 
 <script>
-import {db} from '../firebase.js';
+import {firebase,db} from '../firebase.js';
 export default {
     name: 'Carrito',
     data(){
@@ -112,7 +116,7 @@ export default {
 
     
     created(){
-          db.collection('Carrito').get().then((querySnapshot) => {
+          db.collection('Carrito').where('Usuario_id','==', firebase.auth().currentUser.uid).get().then((querySnapshot) => {
             querySnapshot.forEach((doc) =>{
               //console.log(doc.data())
                  const data ={
@@ -129,6 +133,16 @@ export default {
                  //console.log(this.Total);
             })
           });      
+    },
+
+    methods:{
+        Borrar_item: function(){
+                db.collection('Carrito').where('Producto_id', '==' , this.Productos_enCarrito.Producto_id).get().then(querySnapshot =>{
+                    querySnapshot.forEach(doc => {
+                        doc.ref.delete()
+                    })
+                })
+        }
     },
 
   computed: {
