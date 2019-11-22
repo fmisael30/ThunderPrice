@@ -17,7 +17,7 @@
             <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
               <li class="nav-item active"><router-link class="nav-link" to="/inicio" style="color:#222 !important;">Inicio</router-link></li>
               <li class="nav-item"><router-link class="nav-link" to="/productos" style="color:#222 !important;">Productos</router-link></li>
-              <li class="nav-item"><router-link class="nav-link" to="/crud" style="color:#222 !important;">CRUD</router-link></li>
+              <li class="nav-item"><router-link class="nav-link" to="/publicar" style="color:#222 !important;">Publicar</router-link></li>
             </ul>
 
             <ul class="d-flex" style="color:#222 !important;">

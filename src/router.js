@@ -63,15 +63,15 @@ let router = new Router({
       }
     },
     {
-      path: '/crud',
-      name: 'crud',
-      component: () => import(/* webpackChunkName: "crud" */ './views/CRUD.vue'),
+      path: '/publicar',
+      name: 'publicar',
+      component: () => import(/* webpackChunkName: "publicar" */ './views/Publicar.vue'),
       meta: {
           requiresAuth: true
       }
     },
     {
-      path: '/Carrito',
+      path: '/carrito',
       name: 'carrito',
       component: () => import(/* webpackChunkName: "carrito" */ './views/Carrito.vue'),
       meta: {
@@ -79,7 +79,7 @@ let router = new Router({
       }
     },
     {
-      path: '/Checkout',
+      path: '/checkout',
       name: 'checkout',
       component: () => import(/* webpackChunkName: "checkout" */ './views/Checkout.vue'),
       meta: {
@@ -87,7 +87,7 @@ let router = new Router({
       }
     },
     {
-      path: '/Confirmation',
+      path: '/confirmation',
       name: 'confirmation',
       component: () => import(/* webpackChunkName: "confirmation" */ './views/Confirmation.vue'),
       meta: {

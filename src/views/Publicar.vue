@@ -34,7 +34,7 @@
 import {firebase,db ,ref} from '../firebase.js'
 import Swal from 'sweetalert';
 export default {
-  name:'CRUD',
+  name:'Publicar',
   data(){
     return{
       Publicante: 'Beta Tester',
