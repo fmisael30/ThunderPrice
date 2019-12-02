@@ -12,7 +12,7 @@
 
 
 <script>
-/* eslint no-use-before-define: 0 */  // --> OFF
+/* eslint-disable */
 export default {
   components:{
     BarraDeNavegacion: () => import('./components/Navegacion.vue'),
@@ -25,21 +25,20 @@ export default {
   },
 
 };
-  // eslint-disable-next-line no-use-before-define: 0
+// eslint-disable-next-line
   import "./assets/vendors/jquery/jquery-3.2.1.min.js";
-  // eslint-disable-next-line no-use-before-define: 0
+  // eslint-disable-next-line
   import "./assets/vendors/bootstrap/bootstrap.bundle.min.js";
-  // eslint-disable-next-line no-use-before-define: 0
+  // eslint-disable-next-line
   import "./assets/vendors/owl-carousel/js/owl.carousel.js";
-  // eslint-disable-next-line no-use-before-define: 0
   import "./assets/vendors/skrollr.min.js";
-  // eslint-disable-next-line no-use-before-define: 0
+  // eslint-disable-next-line
   import "./assets/vendors/nice-select/jquery.nice-select.min.js";
-  // eslint-disable-next-line no-use-before-define: 0
+  // eslint-disable-next-line
   import "./assets/vendors/jquery.ajaxchimp.min.js";
-  // eslint-disable-next-line no-use-before-define: 0
+  // eslint-disable-next-line
   import "./assets/vendors/mail-script.js";
-  // eslint-disable-next-line no-use-before-define: 0
+  // eslint-disable-next-line
   import "./assets/js/main.js"; 
 </script>
 <style>

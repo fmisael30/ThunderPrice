@@ -15,7 +15,7 @@
                         <img class="img-fluid" v-bind:src="Imagen" style="min-width:100%;max-width:100%; object-fit:cover !important; margin:auto !important;">
                     </div>
 				</div>
-				<div class="col-lg-5 offset-lg-1">
+				<div class="col-lg-6">
 					<div class="s_product_text">
                     <h3>{{Nombre}}</h3>
                     <h2>${{Precio}}</h2>
@@ -28,7 +28,6 @@
 							<a href="#" class="button primary-btn" @click="Comprar">Comprar</a>               
 						</div>
 						<div class="card_area d-flex align-items-center">
-							<router-link v-if="SePuedeEditar" class="icon_btn" v-bind:to="{name: 'productoEditar', params:{Producto_id:Producto_id}}"><i class="lnr lnr lnr-pencil"></i></router-link>
 							<a class="icon_btn" @click="Agregar_Carrito" style="cursor:pointer;"><i class="lnr lnr lnr-cart"></i></a>
 						</div>
 					</div>
@@ -63,7 +62,7 @@ data(){
         Descripcion:null,
         Publicador_id: null,
         SePuedeEditar: false,
-        Usuario: null,
+        Usuario: firebase.auth().currentUser.uid,
     }
 },
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -100,15 +99,12 @@ watch: {
                     this.Categoria = doc.data().Categoria
                     this.Descripcion = doc.data().Descripcion
                     this.Publicador_id = doc.data().Publicador_id
-                })
-            })
 
-            if(this.Usuario == this.Publicador_id){
-                this.SePuedeEditar = firebase.auth().currentUser.uid
-            }
-            else{
-                this.SePuedeEditar = false
-            }
+                    if(this.Usuario == doc.data().Publicador_id){
+                        this.SePuedeEditar = true
+                    }
+                })
+            });
         },
 
 
@@ -131,6 +127,7 @@ watch: {
                       })              
 
                 Swal({ title: "Producto agregado al carrito", text: "Tu producto se ha sigo agregado a tu carrito", icon: "success", buttons: "ok"})
+                      .then(() =>{self.$router.go('carrito')})
             })
             .catch(error => console.log(error))
         },

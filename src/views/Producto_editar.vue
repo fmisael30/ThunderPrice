@@ -26,7 +26,8 @@
 						</ul>
                         <p><textarea name="" id="" cols="30" rows="5" v-model="Descripcion"></textarea></p>
 						<div class="product_count">
-							<a href="#" class="button primary-btn" @click="Guardar_Cambios">Guardar cambios</a>               
+							<a href="#" class="button primary-btn mb-5" @click="Guardar_Cambios">Guardar cambios</a>      
+							<a href="#" class="button primary-btn" @click="Borrar_item">Eliminar Producto</a>            
 						</div>
 					</div>
 				</div>
@@ -125,8 +126,22 @@ watch: {
             Swal({ title: "Producto editado", text: "Tu producto se ha sido editado sin problemas", icon: "success", button: "ok"})
             
       
-        }
+        },
 
+
+        Borrar_item: function(){
+            db.collection('Productos').where('Producto_id', '==' , this.$route.params.Producto_id).get().then(querySnapshot =>{
+                querySnapshot.forEach(doc => {
+                    doc.ref.delete();
+                })
+            }),
+            db.collection('Carrito').where('Producto_id', '==' , this.$route.params.Producto_id).get().then(querySnapshot =>{
+                querySnapshot.forEach(doc => {
+                    doc.ref.delete()
+                      .then(() =>{self.$router.go(-1)});
+                })
+            })
+        }
 
     },
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

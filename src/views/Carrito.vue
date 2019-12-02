@@ -37,13 +37,12 @@
                                   <h5>${{parseFloat(Productos.Precio)*parseFloat(Productos.Cantidad)}}</h5>
                               </td>
                               <td>
-                                  <i class="lnr lnr lnr-trash" style="cursor:pointer;" @click="Borrar_item(index)"></i>
+                                  <i class="lnr lnr lnr-trash" style="cursor:pointer;" @click="Borrar_item(Productos.Producto_id)"></i>
                               </td>
                           </tr>
 
                           <tr class="bottom_button">
                               <td>
-                                  <a class="button" href="#">Update Cart</a>
                               </td>
                               <td>
 
@@ -85,7 +84,7 @@
                               </td>
                               <td>
                                   <div class="checkout_btn_inner d-flex align-items-center">
-                                      <router-link to="/productos" class="gray_btn">Go to shop</router-link>
+                                      <router-link to="/productos" class="gray_btn">Seguir comprando</router-link>
                                       <router-link to="/checkout" class="primary-btn ml-2">Realizar compra</router-link>
                                   </div>
                               </td>
@@ -136,12 +135,13 @@ export default {
     },
 
     methods:{
-        Borrar_item: function(){
-                db.collection('Carrito').where('Producto_id', '==' , this.Productos_enCarrito.Producto_id).get().then(querySnapshot =>{
-                    querySnapshot.forEach(doc => {
-                        doc.ref.delete()
-                    })
+        Borrar_item: function(Producto_id){
+            console.log(Producto_id)
+            db.collection('Carrito').where('Producto_id', '==' , Producto_id).get().then(querySnapshot =>{
+                querySnapshot.forEach(doc => {
+                    doc.ref.delete();
                 })
+            })
         }
     },
 

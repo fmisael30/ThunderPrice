@@ -71,6 +71,14 @@ let router = new Router({
       }
     },
     {
+      path: '/misproductos',
+      name: 'misproductos',
+      component: () => import(/* webpackChunkName: "misproductos" */ './views/MisProductos.vue'),
+      meta: {
+          requiresAuth: true
+      }
+    },
+    {
       path: '/carrito',
       name: 'carrito',
       component: () => import(/* webpackChunkName: "carrito" */ './views/Carrito.vue'),

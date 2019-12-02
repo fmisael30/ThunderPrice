@@ -75,7 +75,7 @@
               <h3>Up To 50% Off</h3>
               <h4>Winter Sale</h4>
               <p>Him she'd let them sixth saw light</p>
-              <a class="button button--active mt-3 mt-xl-4" href="#">Shop Now</a>
+              <router-link to="/productos" class="button button--active mt-3 mt-xl-4">Ve de compras</router-link>
             </div>
           </div>
         </div>
