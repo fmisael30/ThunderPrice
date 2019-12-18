@@ -19,6 +19,7 @@
               <li class="nav-item"><router-link class="nav-link" to="/productos" style="color:#222 !important;">Productos</router-link></li>
               <li class="nav-item"><router-link class="nav-link" to="/publicar" style="color:#222 !important;">Publicar</router-link></li>
               <li class="nav-item"><router-link class="nav-link" to="/misproductos" style="color:#222 !important;">Mis Productos</router-link></li>
+              <li class="nav-item"><router-link class="nav-link" to="/historial" style="color:#222 !important;">Historial</router-link></li>
             </ul>
 
             <ul class="d-flex" style="color:#222 !important;">

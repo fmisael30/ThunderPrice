@@ -95,9 +95,9 @@ let router = new Router({
       }
     },
     {
-      path: '/confirmation',
-      name: 'confirmation',
-      component: () => import(/* webpackChunkName: "confirmation" */ './views/Confirmation.vue'),
+      path: '/historial',
+      name: 'historial',
+      component: () => import(/* webpackChunkName: "historial" */ './views/Historial.vue'),
       meta: {
           requiresAuth: true
       }

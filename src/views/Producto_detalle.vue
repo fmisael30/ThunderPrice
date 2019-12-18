@@ -127,7 +127,7 @@ watch: {
                       })              
 
                 Swal({ title: "Producto agregado al carrito", text: "Tu producto se ha sigo agregado a tu carrito", icon: "success", buttons: "ok"})
-                      .then(() =>{self.$router.go('carrito')})
+                      .then(() =>{self.$router.replace('/carrito')});
             })
             .catch(error => console.log(error))
         },
@@ -149,7 +149,7 @@ watch: {
                         Cantidad: 1,
                         Usuario_id: firebase.auth().currentUser.uid,
                       })
-                      .then(() =>{self.$router.go('carrito')})
+                      .then(() =>{self.$router.replace('/carrito')});
             })
             .catch(error => console.log(error))
         },

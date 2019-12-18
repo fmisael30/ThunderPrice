@@ -64,7 +64,7 @@ export default {
         firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
             () => {
 			Swal({ title: "Inicio de sesion exitoso" , text: "la sesion se ha iniciado sin problemas, ya puede comenzar a utilizar la plataforma", icon: "success"})
-			.then(() =>{this.$router.go('/inicio')})
+			.then(() =>{this.$router.replace('/inicio')})
             },
             (err) =>{
             Swal({ title: "Error!", text: err.message, icon: "error"})
